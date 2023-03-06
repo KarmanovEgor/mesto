@@ -1,0 +1,138 @@
+.page {
+  background-color: #000000;
+  max-width: 1280px;
+  width: 100%;
+
+}
+.header {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(84, 84, 84, 1);
+}
+.header__logo {
+margin: 45px auto 41px auto;
+
+}
+.profile {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+
+}
+.profile__info {
+  position: relative;
+  display: grid;
+  align-self: center;
+  grid-template-columns: 1fr 24px;
+  row-gap: 16px;
+  column-gap: 18px;
+}
+.profile__title {
+  color: #FFFFFF;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.profile__subtitle {
+  color: #FFFFFF;
+  margin: 0;
+
+}
+.info__button {
+  background-image: url('/images/EditButton.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  margin: 0;
+  align-self: center;
+  background-color: #000000;
+
+}
+.profile__button {
+  background-image: url('/images/AddButton.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  max-width: 150px;
+  height: 50px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin: 35px 0 35px auto;
+  align-self: center;
+  background-color: #000000;
+}
+.profile__img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin: 40px 30px 51px 0;
+}
+.elements{
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  gap: 20px 17px;
+
+}
+.elements__name {
+  display: flex;
+  justify-content: space-between;
+  max-width: 246px;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 31px;
+  align-items: center;
+}
+.element__name {
+  margin: 0;
+}
+.like {
+  background-image: url('/images/like.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  max-width: 22px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  padding: 0;
+  height: 19px;
+  margin-right: 5px;
+}
+
+.element__card {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+
+
+}
+.element__foto {
+  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.footer_copyright {
+  margin: 67px auto 60px 0;
+  color: #545454;
+
+}
+
