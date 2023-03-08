@@ -1,0 +1,9 @@
+.element__names {
+  display: flex;
+  justify-content: space-between;
+  max-width: 246px;
+  width: 100%;
+  margin-top: 23px;
+  margin-bottom: 25px;
+  align-items: center;
+}
