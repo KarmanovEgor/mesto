@@ -3,17 +3,22 @@
   border-radius: 10px;
   color: #000;
   max-width: 430px;
-  position: fixed;
+  min-height: 330px;
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: start;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  padding: 34px 36px 37px 36px;
 }
 @media screen and (max-width: 767px) {
     .popup__container {
         width: calc(282px + (430 - 282) * ((100vw - 320px)/(1280 - 320)));
-    
+        max-height: 322px;
+        padding: 25px 22px;
+
       }
 }
