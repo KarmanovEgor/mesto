@@ -16,7 +16,6 @@
     .profile__subtitle {
         font-size: calc(14px + (18 - 14) * ((100vw - 320px)/(1280 - 320)));
         line-height: 17px;
-        text-align: left;
         margin-left: 18px;
 
       }
