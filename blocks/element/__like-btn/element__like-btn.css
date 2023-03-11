@@ -9,7 +9,7 @@
   background-color: #FFFFFF;
   padding: 0;
   height: 19px;
-  margin-right: 5px;
+  
   transition: .5s ease-in-out;
 }
 .element__like-btn:hover {

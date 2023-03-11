@@ -7,19 +7,24 @@
   border: none;
   cursor: pointer;
   margin: 31px 0 48px auto;
-  align-self: center;
-  justify-content: end;
+
   background-color: #000000;
   transition: .5s ease-in-out;
 }
 .profile__button-add:hover {
-  opacity: 0.5;
+  opacity: 0.6;
+}
+@media screen and (max-width: 920px) {
+
+  .profile__button-add {
+    margin: 31px 0 48px auto;
+  }
 }
 @media screen and (max-width: 767px) {
     .profile__button-add {
         background-image: url('../../../images/AddButton282.svg');
         background-size: contain;
         width: 282px;
-        margin: 16px auto 36px auto;
+        margin: 23px auto 36px auto;
       }
 }

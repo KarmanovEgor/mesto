@@ -7,12 +7,12 @@
   font-weight: 500;
   line-height: 48px;
   text-align: left;
-
+  overflow: hidden;
 }
 @media screen and (max-width: 767px) {
     .profile__title {
         font-size: calc(27px + (42 - 27) * ((100vw - 320px)/(1280 - 320)));
         line-height: 33px;
-    
+
       }
 }

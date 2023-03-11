@@ -1,14 +1,15 @@
 .profile__subtitle {
   color: #FFFFFF;
   margin: 0;
-  margin-bottom: 20px;
   grid-column-start: 1;
   grid-column-end: 3;
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
   text-align: left;
-
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
 }
 @media screen and (max-width: 767px) {

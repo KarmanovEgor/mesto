@@ -1,9 +1,15 @@
 .element__names {
   display: flex;
   justify-content: space-between;
-  max-width: 246px;
-  width: 100%;
-  margin-top: 23px;
-  margin-bottom: 25px;
+  margin: 0 auto;
+  width: 246px;
+  
+  box-sizing: border-box;
+  padding: 25px 0px 26px 0px;
   align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .element__names {
+    padding: 24px 0px 23px 0px;
+  }
 }

@@ -1,40 +1,42 @@
 // Находим форму в DOM
-let formElement = document.querySelector(".popup");
+const formElement = document.querySelector(".popup");
 
 
 // Находим поля формы в DOM
-let nameInput = formElement.querySelector("#name");
-let jobInput = formElement.querySelector("#job");
+const nameInput = formElement.querySelector("#name");
+const jobInput = formElement.querySelector("#job");
 const popupCloseButtonElement = formElement.querySelector(".popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
 const popupSaveButtonElement = formElement.querySelector(".popup__btn-save");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
+const popupForm = formElement.querySelector(".popup__form");
 
 
-const addPopupVisibility = function () {
-formElement.classList.add('popup__opened');
+
+function addPopupVisibility () {
+nameInput.value = profileTitle.textContent;
+jobInput.value = profileSubtitle.textContent;
+  formElement.classList.toggle('popup_opened');
 }
-const removePopupVisibility = function () {
-  formElement.classList.remove('popup__opened');
-  }
-
+function closePopupVisibility () {
+  formElement.classList.toggle('popup_opened');
+}
 
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-//                                                 // Так мы можем определить свою логику отправки.
-//                                                 // О том, как это делать, расскажем позже.
-
-//     // Получите значение полей jobInput и nameInput из свойства value
+    evt.preventDefault();
 profileTitle.textContent = nameInput.value;
 profileSubtitle.textContent = jobInput.value;
- }
+closePopupVisibility();
+  }
+
 
 // // Прикрепляем обработчик к форме:
 // // он будет следить за событием “submit” - «отправка»
- formElement.addEventListener('submit', handleFormSubmit);
+ popupForm.addEventListener('submit', handleFormSubmit);
  popupOpenButtonElement.addEventListener('click', addPopupVisibility);
- popupCloseButtonElement.addEventListener('click', removePopupVisibility);
+ popupCloseButtonElement.addEventListener('click', closePopupVisibility);
+

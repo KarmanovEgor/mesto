@@ -11,7 +11,7 @@
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" title="логотип mesto" alt="логотип mesto" src="./images/logo.svg">
+    <img class="header__logo" title="логотип локация" alt="логотип локация" src="./images/logo.svg">
   </header>
   <main class="content">
     <section class="profile">
@@ -24,74 +24,68 @@
       <button type="button" class="profile__button-add"></button>
     </section>
     <section class="element">
-      <article class="element__card">
+      <div class="element__card">
         <img class="element__foto" alt="Карачаевск" src="./images/karachaev.jpg">
         <div class="element__names">
           <h2 class="element__name">Карачаевск</h2>
           <button class="element__like-btn" type="button"></button>
         </div>
-      </article>
-      <article class="element__card">
+      </div>
+      <div class="element__card">
         <img class="element__foto" alt="Гора Эльбрус" src="./images/elbrus.png">
         <div class="element__names">
           <h2 class="element__name">Гора Эльбрус</h2>
           <button class="element__like-btn" type="button"></button>
         </div>
-      </article>
-      <article class="element__card">
+      </div>
+      <div class="element__card">
         <img class="element__foto" alt="Домбай" src="./images/dombai.png">
         <div class="element__names">
           <h2 class="element__name">Домбай</h2>
           <button class="element__like-btn" type="button"></button>
         </div>
-      </article>
-      <article class="element__card">
+      </div>
+      <div class="element__card">
         <img class="element__foto" alt="Карачаевск" src="./images/karachaev.jpg">
         <div class="element__names">
           <h2 class="element__name">Карачаевск</h2>
           <button class="element__like-btn" type="button"></button>
         </div>
-      </article>
-      <article class="element__card">
+      </div>
+      <div class="element__card">
         <img class="element__foto" alt="Карачаевск" src="./images/karachaev.jpg">
         <div class="element__names">
           <h2 class="element__name">Карачаевск</h2>
           <button class="element__like-btn" type="button"></button>
         </div>
-      </article>
-      <article class="element__card">
+      </div>
+      <div class="element__card">
         <img class="element__foto" alt="Карачаевск" src="./images/karachaev.jpg">
         <div class="element__names">
           <h2 class="element__name">Карачаевск</h2>
           <button class="element__like-btn" type="button"></button>
         </div>
-      </article>
+      </div>
     </section>
   </main>
   <footer class="footer">
-    <h2 class="footer__copyright">&copy; 2020 Mesto Russia</h2>
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
   <div class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <button class="popup__close" type="button"></button>
-      <form class="popup__form" name="form-edit" action="#">
+      <form class="popup__form" name="form-edit" action="#" method="post">
         <fieldset class="popup__elements">
-          <input class="popup__element" name="profilename" id="name" placeholder="Имя" minlength="2" maxlength="30"
-            required>
-          <input class="popup__element" name="job" id="job" placeholder="Вид деятельности" minlength="2" maxlength="30"
-            required>
+          <input class="popup__element" name="profilename" id="name" placeholder="Имя" required>
+          <input class="popup__element" name="job" id="job" placeholder="Вид деятельности" required>
         </fieldset>
+        <button class="popup__btn-save" type="submit">Сохранить</button>
       </form>
-      <button class="popup__btn-save" type="submit">Сохранить</button>
+
     </div>
   </div>
   <script src="./script/index.js"></script>
 </body>
 
 </html>
-
-
-
-
-

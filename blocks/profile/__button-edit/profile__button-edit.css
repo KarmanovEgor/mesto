@@ -6,7 +6,7 @@
   cursor: pointer;
   height: 24px;
   margin: 0;
-  margin-top: 12px;
+  margin-top: 7px;
   align-self: center;
   background-color: #000000;
   transition: .5s ease-in-out;
@@ -20,5 +20,5 @@
 }
 
 .profile__button-edit:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
