@@ -7,7 +7,6 @@ const nameInput = formElement.querySelector("#name");
 const jobInput = formElement.querySelector("#job");
 const popupCloseButtonElement = formElement.querySelector(".popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__button-edit");
-const popupSaveButtonElement = formElement.querySelector(".popup__btn-save");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const popupForm = formElement.querySelector(".popup__form");
@@ -17,10 +16,10 @@ const popupForm = formElement.querySelector(".popup__form");
 function addPopupVisibility () {
 nameInput.value = profileTitle.textContent;
 jobInput.value = profileSubtitle.textContent;
-  formElement.classList.toggle('popup_opened');
+  formElement.classList.add('popup_opened');
 }
 function closePopupVisibility () {
-  formElement.classList.toggle('popup_opened');
+  formElement.classList.remove('popup_opened');
 }
 
 

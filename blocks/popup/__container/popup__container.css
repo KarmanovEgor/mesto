@@ -17,11 +17,7 @@
 }
 @media screen and (max-width: 767px) {
     .popup__container {
-      justify-content: space-between;
         width: calc(282px + (430 - 282) * ((100vw - 320px)/(1280 - 320)));
         padding: 25px 22px;
-        
-
-
       }
 }
