@@ -25,6 +25,7 @@
     </section>
     <section class="element">
       <div class="element__card">
+        <button class="element__trash-btn" type="button"></button>
         <img class="element__foto" alt="Карачаевск" src="./images/karachaev.jpg">
         <div class="element__names">
           <h2 class="element__name">Карачаевск</h2>
@@ -71,20 +72,32 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup__edit">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <button class="popup__close" type="button"></button>
-      <form class="popup__form" name="form-edit" action="#" method="post">
+      <form class="popup__form popup__form-edit" name="form-edit" action="#" method="post">
         <fieldset class="popup__elements">
           <input class="popup__element" name="profilename" id="name" placeholder="Имя" required>
           <input class="popup__element" name="job" id="job" placeholder="Вид деятельности" required>
         </fieldset>
-        <button class="popup__btn-save" type="submit">Сохранить</button>
+        <button class="popup__btn" type="submit">Сохранить</button>
       </form>
-
     </div>
   </div>
+    <div class="popup popup__add-form">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form popup__form-add" name="form-add" action="#" method="post">
+          <fieldset class="popup__elements">
+            <input class="popup__element" name="cardname" id="namecard" placeholder="Название" required>
+            <input class="popup__element" name="source" id="src" placeholder="Ссылка на картинку" required>
+          </fieldset>
+          <button class="popup__btn" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
   <script src="./script/index.js"></script>
 </body>
 

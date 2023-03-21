@@ -6,6 +6,7 @@
   justify-content: center;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
     .element__card {
