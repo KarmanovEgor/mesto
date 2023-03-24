@@ -9,14 +9,11 @@
   background-color: #FFFFFF;
   padding: 0;
   height: 19px;
-  
+
   transition: .5s ease-in-out;
 }
 .element__like-btn:hover {
   opacity: 0.5;
 
 }
-.element__like-btn:active {
-  background-image: url('../../../images/likeblack.svg');
-  opacity: 1;
-}
+

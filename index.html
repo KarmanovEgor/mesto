@@ -58,13 +58,26 @@
         </form>
       </div>
     </div>
+    <div class="popup popup__img-form">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <button class="popup__close" type="button"></button>
+        <form class="popup__form popup__form-add" name="form-add" action="#" method="post">
+          <fieldset class="popup__elements">
+            <input class="popup__element" name="cardname" id="namecard" placeholder="Название" required>
+            <input class="popup__element" name="source" id="src" placeholder="Ссылка на картинку" required>
+          </fieldset>
+          <button class="popup__btn" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
     <!--Template -->
     <template class="element__cards">
       <div class="element__card">
         <button class="element__trash-btn" type="button"></button>
-        <img class="element__foto" alt="Карачаевск" src="./images/karachaev.jpg">
+        <img class="element__foto" alt="Изображение карточки" src=" ">
         <div class="element__names">
-          <h2 class="element__name">Карачаевск</h2>
+          <h2 class="element__name"></h2>
           <button class="element__like-btn" type="button"></button>
         </div>
       </div>

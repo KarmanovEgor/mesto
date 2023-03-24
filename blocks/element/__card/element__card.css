@@ -7,6 +7,8 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  max-width: 282px;
+  width: 100%;
 }
 @media screen and (max-width: 767px) {
     .element__card {
