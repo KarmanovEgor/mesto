@@ -1,7 +1,7 @@
 // -------Popup редактирования профиля------------------
 
 const formElement = document.querySelector(".popup");
-const formElementEdit = document.querySelector(".popup__edit");
+const formElementEdit = document.querySelector(".popup_edit");
 const nameInput = formElement.querySelector("#name");
 const jobInput = formElement.querySelector("#job");
 const popupCloseButtonEditElement = formElement.querySelector(".popup__close");
@@ -71,7 +71,7 @@ const cards = [
 
 // -------Popup добавления карточки------------------
 
-const formElementAdd = document.querySelector(".popup__add-form");
+const formElementAdd = document.querySelector(".popup_add-form");
 const namePlaceInput = formElementAdd.querySelector("#namecard");
 const srcPlaceInput = formElementAdd.querySelector("#src");
 const popupOpenOpenAddElement = document.querySelector(".profile__button-add");
@@ -81,7 +81,7 @@ const popupCloseButtonAddElement =
 const elementSection = document.querySelector(".element");
 const nameCardInput = formElementAdd.querySelector("#namecard");
 const srcInput = formElementAdd.querySelector("#src");
-const popupImgForm = document.querySelector(".popup__img-form");
+const popupImgForm = document.querySelector(".popup_img-form");
 const popupImg = popupImgForm.querySelector(".popup__image");
 const popupImgClose = popupImgForm.querySelector(".popup__close");
 const popupImgCaption = popupImgForm.querySelector(".popup__figurecaption-img");
