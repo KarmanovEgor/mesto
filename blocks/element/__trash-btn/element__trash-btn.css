@@ -6,7 +6,7 @@
   width: 100%;
   border: none;
   cursor: pointer;
-  background-color: #ffffff00;;
+  background-color: #ffffff00;
   padding: 0;
   height: 19px;
   position: absolute;
@@ -14,7 +14,7 @@
   top: 20px;
   right: 20px;
 }
+
 .element__trash-btn:hover {
   opacity: 0.5;
-
 }
