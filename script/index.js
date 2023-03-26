@@ -20,6 +20,7 @@ const openPopup = function (namePopup) {
 const closePopup = function (namePopup) {
   namePopup.classList.remove("popup_opened");
 };
+
 // Popup редактирования ---- функция открытия и закрытия
 
 function openPopupEdit() {
@@ -27,9 +28,7 @@ function openPopupEdit() {
   jobInput.value = profileSubtitle.textContent;
   openPopup(formElementEdit);
 }
-function closePopupEdit() {
-  closePopup(formElementEdit);
-}
+
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -40,7 +39,7 @@ function handleFormSubmit(evt) {
 
 popupFormEdit.addEventListener("submit", handleFormSubmit);
 popupOpenButtonElement.addEventListener("click", openPopupEdit);
-popupCloseButtonEditElement.addEventListener("click", closePopupEdit);
+
 
 const cards = [
   {
@@ -123,17 +122,17 @@ cards.forEach((el) => {
   elementSection.append(card);
 });
 
-// Popup добавления карточки ---- функция открытия и закрытия
+// Popup добавления карточки ---- функция открытия
 function openPopupAdd() {
   openPopup(formElementAdd);
 }
 function closePopupAdd() {
+
   closePopup(formElementAdd);
+
 }
-// функция закрытия popup Image
-function closePopupImg() {
-  closePopup(popupImgForm);
-}
+
+
 // функция ввода данных в попап и добавления карточки
 function handleFormAdd(evt) {
   evt.preventDefault();
@@ -145,8 +144,16 @@ function handleFormAdd(evt) {
   evt.target.reset();
   closePopupAdd();
 }
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
+
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 popupFormAdd.addEventListener("submit", handleFormAdd);
 popupOpenOpenAddElement.addEventListener("click", openPopupAdd);
-popupCloseButtonAddElement.addEventListener("click", closePopupAdd);
-popupImgClose.addEventListener("click", closePopupImg);
+
