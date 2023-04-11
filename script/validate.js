@@ -33,6 +33,9 @@ const setEventListener = (
     });
   });
 };
+//  checkInputValidity проверяет валидность текущего поля ввода и, если оно невалидно, показывает сообщение об ошибке с помощью функции showInputError.
+//  Если поле валидно, то скрывает сообщение об ошибке с помощью функции hideInputError.
+
 const checkInputValidity = (input, errorSelectType, inputErrorClass, textErrorClass, ...rest)  => {
   const currentInputErrorContainer = document.querySelector(`${errorSelectType}${input.name}`);
   // ??? подскажите, пожалуйста, Что на практике лучше использовать, тернарный оператор или конструкцию if-else?
@@ -82,4 +85,3 @@ enableValidation(validConfig);
 
 
 
-  

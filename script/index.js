@@ -1,6 +1,7 @@
 // -------Popup редактирования профиля------------------
 
 const formElement = document.querySelector(".popup");
+const popupList = document.querySelectorAll(".popup");
 const formElementEdit = document.querySelector(".popup_edit");
 const nameInput = formElement.querySelector("#name");
 const jobInput = formElement.querySelector("#job");
@@ -13,13 +14,28 @@ const popupFormEdit = formElement.querySelector(".popup__form-edit");
 // Popup ---- общая функция открытия
 const openPopup = function (namePopup) {
   namePopup.classList.add("popup_opened");
-  console.log(openPopup);
+  document.addEventListener('keydown',closePopupEsc);
 };
 // Popup ---- общая функция закрытия
 
 const closePopup = function (namePopup) {
   namePopup.classList.remove("popup_opened");
+  document.removeEventListener('keydown',closePopupEsc);
 };
+// функция закрытия попап Esc
+const closePopupEsc = function(evt) {
+  if (evt.key === 'Escape') {
+    const popupVisible = document.querySelector('.popup_opened');
+    closePopup(popupVisible)
+  }
+}
+// функция закрытия попап overlay
+const closePopupOverlay = function (evt) {
+if (evt.target === evt.currentTarget) {
+  closePopup(evt.currentTarget);
+}
+}
+
 
 // Popup редактирования ---- функция открытия и закрытия
 
@@ -127,7 +143,6 @@ function openPopupAdd() {
   openPopup(formElementAdd);
 }
 function closePopupAdd() {
-
   closePopup(formElementAdd);
 
 }
@@ -159,3 +174,6 @@ popupOpenOpenAddElement.addEventListener("click", openPopupAdd);
 
 
 
+popupList.forEach((popup) => { popup.addEventListener('click', closePopupOverlay)
+
+})
