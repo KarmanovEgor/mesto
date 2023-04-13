@@ -21,42 +21,82 @@ const enableValidation = ({ formSelector, ...rest }) => {
 };
 const setEventListener = (
   formValidate,
-  {inputSelector, submitButtonSelector, errorSelectType, inputErrorClass, textErrorClass, inactiveButtonClass, ...rest}
+  {
+    inputSelector,
+    formSelector,
+    submitButtonSelector,
+    errorSelectType,
+    inputErrorClass,
+    textErrorClass,
+    inactiveButtonClass,
+    ...rest
+  }
 ) => {
   const formInputs = Array.from(formValidate.querySelectorAll(inputSelector));
   const formButton = formValidate.querySelector(submitButtonSelector);
-  // disableButton(formButton, rest);
+  disableButton(formButton, inactiveButtonClass);
   formInputs.forEach((input) => {
     input.addEventListener("input", () => {
-      checkInputValidity(input, errorSelectType, inputErrorClass, textErrorClass) ;
+      checkInputValidity(
+        input,
+        errorSelectType,
+        inputErrorClass,
+        textErrorClass
+      );
       toggleButtonState(formInputs, formButton, inactiveButtonClass);
     });
-  });
-};
+  })
+  }
 //  checkInputValidity проверяет валидность текущего поля ввода и, если оно невалидно, показывает сообщение об ошибке с помощью функции showInputError.
 //  Если поле валидно, то скрывает сообщение об ошибке с помощью функции hideInputError.
 
-const checkInputValidity = (input, errorSelectType, inputErrorClass, textErrorClass, ...rest)  => {
-  const currentInputErrorContainer = document.querySelector(`${errorSelectType}${input.name}`);
-  // ??? подскажите, пожалуйста, Что на практике лучше использовать, тернарный оператор или конструкцию if-else?
-  // (input.validity.valid ? hideInputError() : hideInputError())
+const checkInputValidity = (
+  input,
+  errorSelectType,
+  inputErrorClass,
+  textErrorClass,
+  ...rest
+) => {
+  const currentInputErrorContainer = document.querySelector(
+    `${errorSelectType}${input.name}`
+  );
   const isValid = input.validity.valid;
   if (isValid) {
-    hideInputError(input, currentInputErrorContainer, inputErrorClass, textErrorClass) ;
-
+    hideInputError(
+      input,
+      currentInputErrorContainer,
+      inputErrorClass,
+      textErrorClass
+    );
   } else {
-    showInputError(input, currentInputErrorContainer, inputErrorClass, textErrorClass) ;
-
+    showInputError(
+      input,
+      currentInputErrorContainer,
+      inputErrorClass,
+      textErrorClass
+    );
   }
 };
 
-const hideInputError = (input, currentInputErrorContainer, inputErrorClass, textErrorClass, ...rest) => {
+const hideInputError = (
+  input,
+  currentInputErrorContainer,
+  inputErrorClass,
+  textErrorClass,
+  ...rest
+) => {
   input.classList.remove(inputErrorClass);
   currentInputErrorContainer.classList.remove(textErrorClass);
-  currentInputErrorContainer.textContent = '';
+  currentInputErrorContainer.textContent = "";
 };
 
-const showInputError = (input, currentInputErrorContainer, inputErrorClass, textErrorClass, ...rest) => {
+const showInputError = (
+  input,
+  currentInputErrorContainer,
+  inputErrorClass,
+  textErrorClass,
+  ...rest
+) => {
   input.classList.add(inputErrorClass);
   currentInputErrorContainer.classList.add(textErrorClass);
   currentInputErrorContainer.textContent = input.validationMessage;
@@ -64,24 +104,43 @@ const showInputError = (input, currentInputErrorContainer, inputErrorClass, text
 
 const toggleButtonState = (formInputs, formButton, inactiveButtonClass) => {
   // здесь я применил тернарный оператор для разнообразия
-  hasInvalidInput(formInputs) ? enableButton(formButton, inactiveButtonClass) : disableButton(formButton, inactiveButtonClass);
+  hasInvalidInput(formInputs)
+    ? disableButton (formButton, inactiveButtonClass)
+    : enableButton(formButton, inactiveButtonClass);
+};
+
+const disableButton = (formButton, { inactiveButtonClass }) => {
+  formButton.classList.add(inactiveButtonClass);
+  formButton.setAttribute("disabled", true);
+};
+
+const enableButton = (formButton, { inactiveButtonClass }) => {
+  formButton.classList.remove(inactiveButtonClass);
+  formButton.removeAttribute("disabled");
+};
+const hasInvalidInput = (formInputs) => {
+  return formInputs.some((input) => !input.validity.valid);
+};
+// сброс ошибок попапов и деактивация кнопки
+const resetErrorOpenForm = (form) => {
+  const formButton = form.querySelector(validConfig.submitButtonSelector);
+  console.log(formButton)
+  form.querySelectorAll(validConfig.inputSelector).forEach((input) => {
+    const currentInputErrorContainer = document.querySelector(
+      `${validConfig.errorSelectType}${input.name}`
+    );
+
+    if (!input.validity.valid) {
+      hideInputError(input, currentInputErrorContainer,  validConfig.inputErrorClass, validConfig.textErrorClass)
+    }
+    disableButton(formButton, validConfig.inactiveButtonClass);
+
+  })
+
 }
 
-const enableButton = (formButton, {inactiveButtonClass}) => {
-  formButton.classList.add(inactiveButtonClass);
-  formButton.setAttribute('disabled', true);
- }
-
- const disableButton = (formButton, {inactiveButtonClass}) => {
-  formButton.classList.remove(inactiveButtonClass);
-  formButton.removeAttribute('disabled');
- }
-const hasInvalidInput = (formInputs) => {
-  return formInputs.some(input => !input.validity.valid);
- }
 
 
 enableValidation(validConfig);
-
 
 
