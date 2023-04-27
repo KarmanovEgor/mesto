@@ -1,5 +1,6 @@
 import cards from "./const.js";
 import Card from "./card.js";
+import formValidate from "./FormValidator.js";
 // -------Popup редактирования профиля------------------
 
 const popupList = document.querySelectorAll(".popup");
@@ -44,7 +45,8 @@ const closePopupEsc = function (evt) {
 // Popup редактирования ---- функция открытия и закрытия
 
 function openPopupEdit() {
-  resetErrorOpenForm(popupFormEdit);
+
+  formEditValid.resetErrorOpenForm();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(profilePopup);
@@ -78,7 +80,6 @@ const popupImgForm = document.querySelector(".popup_img-form");
 const popupImg = popupImgForm.querySelector(".popup__image");
 const popupImgClose = popupImgForm.querySelector(".popup__close");
 const popupImgCaption = popupImgForm.querySelector(".popup__figurecaption-img");
-// const newCard = document.querySelector(".element__cards").content;
 const templateEl = "#element__cards"
 const popupAddInputList = popupAddCard.querySelectorAll('.popup__element');
 const popupAddButtn = popupAddCard.querySelector('.popup__btn');
@@ -111,64 +112,18 @@ cards.forEach((el) => {
 
 });
 
-class formValidate {
-  constructor(config, form) {
-  this._formSelector = config.formSelector;
-  this._inputSelector = config.inputSelector;
-  this._submitButtonSelector = config.submitButtonSelector;
-  this._inactiveButtonClass = config.inactiveButtonClass;
-  this._inputErrorClass = config.inputErrorClass;
-  this._textErrorClass = config.textErrorClass;
-  this._errorSelectType = config.errorSelectType;
-  this._form = form;
-  }
-  _hideInputError(currentInputErrorContainer, input){
-    input.classList.remove(this._inputErrorClass);
-  currentInputErrorContainer.textContent = "";
-  }
-  _showInputError(currentInputErrorContainer, input){
- input.classList.add(this._inputErrorClass);
- currentInputErrorContainer.textContent = input.validationMessage;
-  }
 
-  _checkInputValidity(input) {
-    const currentInputErrorContainer = this._form.querySelector(
-      `${this._errorSelectType}${input.name}`);
-      const isValid = input.validity.valid;
-  if (isValid) {
-    this._hideInputError(currentInputErrorContainer, input);
-  } else {
-    this._showInputError(currentInputErrorContainer, input);
-  }
-}
-  _setEventListener() {
-    this._inputElements.forEach(input => {
-      input.addEventListener('input', () => {
-        this._checkInputValidity(input)
-        // this._toggleButtonState()
-        console.log(this._inputElements)
-      })
-    })
-  }
-
-  enableValidation() {
-    this._btn = this._form.querySelector(this._submitButtonSelector);
-    this._inputElements = this._form.querySelectorAll(this._inputSelector);
-    this._setEventListener();
-
-
-  }
-}
-// Экземпляр для формы
+// Экземплярs для форм и валидация
 const formEditValid = new formValidate(validConfig, popupFormEdit);
-console.log(formEditValid);
-formEditValid.enableValidation()
+formEditValid.enableValidation();
+const formAddValid = new formValidate(validConfig, popupFormAdd);
+formAddValid.enableValidation();
 
 // Popup добавления карточки ---- функция открытия
 function openPopupAdd() {
-  openPopup(popupAddCard);
   popupFormAdd.reset();
-  resetErrorOpenForm(popupFormAdd);
+  formAddValid.resetErrorOpenForm();
+  openPopup(popupAddCard);
 }
 
 // функция ввода данных в попап и добавления карточки
