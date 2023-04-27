@@ -124,7 +124,7 @@ const hasInvalidInput = (formInputs) => {
 // сброс ошибок попапов и деактивация кнопки
 const resetErrorOpenForm = (form) => {
   const formButton = form.querySelector(validConfig.submitButtonSelector);
-  console.log(formButton)
+  
   form.querySelectorAll(validConfig.inputSelector).forEach((input) => {
     const currentInputErrorContainer = document.querySelector(
       `${validConfig.errorSelectType}${input.name}`
