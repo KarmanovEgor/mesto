@@ -7,10 +7,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: start;
-  row-gap: 15px;
   margin: 0;
-  margin-bottom: 30px;
+  padding-bottom: 15px;
+
 
 
 }
