@@ -20,5 +20,6 @@
     .popup__container {
         width: calc(282px + (430 - 282) * ((100vw - 320px)/(1280 - 320)));
         padding: 25px 22px;
+        row-gap: 40px;
       }
 }
