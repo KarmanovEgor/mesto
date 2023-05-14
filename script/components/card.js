@@ -13,6 +13,7 @@ export default class Card {
     this._likeBtnElement =
       this._cardElement.querySelector(".element__like-btn");
     this._fotoElement = this._cardElement.querySelector(".element__foto");
+
   }
 
   _setEventListener() {

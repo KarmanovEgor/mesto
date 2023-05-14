@@ -1,6 +1,11 @@
-import cards from "./const.js";
-import Card from "./card.js";
-import formValidate from "./FormValidator.js";
+import cards from "./script/utils/const.js";
+import Card from "./script/components/card.js";
+import formValidate from "./script/components/FormValidator.js";
+import PopupWithImage from "./script/components/PopupWithImage.js";
+import Section from "./script/components/Section.js";
+import UserInfo from "./script/components/UserInfo.js";
+import PopupWithForm from "./script/components/PopupWithForm.js";
+
 // -------Popup редактирования профиля------------------
 
 const popupList = document.querySelectorAll(".popup");
@@ -23,33 +28,25 @@ const validConfig = {
   textErrorClass: "popup__error_visible",
   errorSelectType: ".popup__error_type_",
 };
-// Popup ---- общая функция открытия
-const openPopup = function (namePopup) {
-  namePopup.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEsc);
-};
-// Popup ---- общая функция закрытия
+const popupProfileSelector = ".popup_edit";
+const config = {
+  prfileNameSelector: "#name",
+  profileJob: "#job"
+}
 
-const closePopup = function (namePopup) {
-  namePopup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupEsc);
-};
-// функция закрытия попап Esc
-const closePopupEsc = function (evt) {
-  if (evt.key === "Escape") {
-    const popupVisible = document.querySelector(".popup_opened");
-    closePopup(popupVisible);
-  }
-};
+const userInfo = new UserInfo(config);
 
-// Popup редактирования ---- функция открытия и закрытия
+
+// Popup редактирования ---- функция открытия
+
 
 function openPopupEdit() {
 
   formEditValid.resetErrorOpenForm();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  openPopup(profilePopup);
+  // openPopup(profilePopup);
+
 }
 
 function handleProfileFormSubmit(evt) {
@@ -84,34 +81,25 @@ const templateEl = "#element__cards"
 const popupAddInputList = popupAddCard.querySelectorAll('.popup__element');
 const popupAddButtn = popupAddCard.querySelector('.popup__btn');
 
+const elSection = ".element";
 
-function openImgPopup(card) {
-  popupImg.src = card.link;
-  popupImg.alt = card.name;
-  popupImgCaption.textContent = card.name;
-  openPopup(popupImgForm);
-}
+
+const popupImageSelector = '.popup_img-form'
+ const popupImage = new PopupWithImage(popupImageSelector);
+ popupImage.setEventListeners()
 
 
 // Создание новой карточки
 
-function createNewCard(el) {
- const card = new Card(el, templateEl, openImgPopup);
- const cardObject = card.createCard();
-  return cardObject;
-}
-
-//функция добавления карточки
-function addCard(box, card) {
-  box.prepend(card);
-}
-
-// перебор массива cards и добавление карточки в разметку
-cards.forEach((el) => {
-  addCard(elementSection, createNewCard(el))
-
-});
-
+const section = new Section({
+  items: cards,
+  renderer: (el) => {
+    const card = new Card(el, templateEl, popupImage.open);
+    const cardObject = card.createCard();
+    return cardObject;
+  }
+}, elSection)
+section.addCardArray()
 
 // Экземплярs для форм и валидация
 const formEditValid = new formValidate(validConfig, popupFormEdit);
@@ -123,7 +111,7 @@ formAddValid.enableValidation();
 function openPopupAdd() {
   popupFormAdd.reset();
   formAddValid.resetErrorOpenForm();
-  openPopup(popupAddCard);
+  // openPopup(popupAddCard);
 }
 
 // функция ввода данных в попап и добавления карточки
@@ -138,13 +126,14 @@ function handleFormAdd(evt) {
 popupFormAdd.addEventListener("submit", handleFormAdd);
 popupOpenAddButton.addEventListener("click", openPopupAdd);
 
-popupList.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains("popup__close")) {
-      closePopup(popup);
-    }
-  });
-});
+// popupList.forEach((popup) => {
+//   popup.addEventListener("mousedown", (evt) => {
+//     if (evt.target.classList.contains("popup_opened")) {
+//       closePopup(popup);
+//     }
+//     if (evt.target.classList.contains("popup__close")) {
+//       closePopup(popup);
+//     }
+//   });
+// });
+
