@@ -53,17 +53,17 @@
       <button class="popup__close" type="button"></button>
       <form class="popup__form popup__form-add" name="form-add" action="#" method="post" novalidate>
         <fieldset class="popup__elements">
-          <input class="popup__element" type="text" name="cardname" id="namecard" placeholder="Название" minlength="2" maxlength="30" required>
-          <span class="popup__error popup__error_type_cardname"></span>
-          <input class="popup__element" type="url" name="source" id="src" placeholder="Ссылка на картинку" required>
-          <span class="popup__error popup__error_type_source"></span>
+          <input class="popup__element" type="text" name="title" id="title" placeholder="Название" minlength="2" maxlength="30" required>
+          <span class="popup__error popup__error_type_title"></span>
+          <input class="popup__element" type="url" name="link" id="link" placeholder="Ссылка на картинку" required>
+          <span class="popup__error popup__error_type_link"></span>
         </fieldset>
         <button class="popup__btn" type="submit">Создать</button>
       </form>
     </div>
   </div>
   <div class="popup popup_img-form">
-    <div class="popup__gallery"> 
+    <div class="popup__gallery">
       <button class="popup__close" type="button"></button>
       <figure class="popup__figure-img">
         <img class="popup__image" src="#" alt="#">
@@ -82,7 +82,7 @@
       </div>
     </div>
   </template>
-  <script type="module" src="./index.js"></script>
+  <script type="module" src="./pages/index.js"></script>
   <!-- <script src="./script/validate.js"></script> -->
 
 </body>
