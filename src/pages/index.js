@@ -1,3 +1,4 @@
+import "../pages/index.css";
 import Card from "../script/components/card.js";
 import formValidate from "../script/components/FormValidator.js";
 import PopupWithImage from "../script/components/PopupWithImage.js";
@@ -40,19 +41,20 @@ const section = new Section(
 );
 section.addCardArray();
 
-const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
-  evt.preventDefault();
-  userInfo.setUserInfo(popupProfile.getInputValues());
-  popupProfile.close();
+const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
+  userInfo.setUserInfo(data)
 });
 popupProfile.setEventListeners();
 // функция ввода данных в попап и добавления карточки
-const popupAddCards = new PopupWithForm(CardAddPopup, (evt) => {
-  evt.preventDefault();
-  section.addItem(section.renderer(popupAddCards.getInputValues()));
-  popupAddCards.close();
+function creatNewCard (domEl) {
+  const cardElem = new Card(domEl, templateEl, popupImage.open);
+  return cardElem.createCard()
+}
+const popupAddCards = new PopupWithForm(CardAddPopup, (domEl) => {
+  section.addItem(creatNewCard(domEl));
 });
 popupAddCards.setEventListeners();
+console.log(popupAddCards)
 // Popup редактирования ---- функция открытия
 
 function openPopupEdit() {

@@ -1,4 +1,2 @@
-package-lock.json
-package.json
-style.css
 node_modules
+dist 
