@@ -1,6 +1,6 @@
 import "../pages/index.css";
 import Card from "../script/components/card.js";
-import formValidate from "../script/components/FormValidator.js";
+import FormValidate from "../script/components/FormValidator.js";
 import PopupWithImage from "../script/components/PopupWithImage.js";
 import Section from "../script/components/Section.js";
 import UserInfo from "../script/components/UserInfo.js";
@@ -11,7 +11,7 @@ import {
   popupFormEdit,
   popupOpenAddButton,
   templateEl,
-  CardAddPopup,
+  cardAddPopup,
   elSection,
   popupImageSelector,
   popupProfileSelector,
@@ -19,7 +19,6 @@ import {
   validConfig,
   popupFormAdd,
 } from "../script/utils/const.js";
-
 
 const userInfo = new UserInfo(config);
 
@@ -31,30 +30,26 @@ popupImage.setEventListeners();
 const section = new Section(
   {
     items: cards,
-    renderer: (el) => {
-      const card = new Card(el, templateEl, popupImage.open);
-      const cardObject = card.createCard();
-      return cardObject;
-    },
+    renderer: creatNewCard,
   },
   elSection
 );
 section.addCardArray();
 
 const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
-  userInfo.setUserInfo(data)
+  userInfo.setUserInfo(data);
 });
 popupProfile.setEventListeners();
 // функция ввода данных в попап и добавления карточки
-function creatNewCard (domEl) {
-  const cardElem = new Card(domEl, templateEl, popupImage.open);
-  return cardElem.createCard()
+function creatNewCard(cardData) {
+  const cardElem = new Card(cardData, templateEl, popupImage.open);
+  return cardElem.createCard();
 }
-const popupAddCards = new PopupWithForm(CardAddPopup, (domEl) => {
+const popupAddCards = new PopupWithForm(cardAddPopup, (domEl) => {
   section.addItem(creatNewCard(domEl));
 });
 popupAddCards.setEventListeners();
-console.log(popupAddCards)
+console.log(popupAddCards);
 // Popup редактирования ---- функция открытия
 
 function openPopupEdit() {
@@ -64,14 +59,13 @@ function openPopupEdit() {
 }
 
 // Экземплярs для форм и валидация
-const formEditValid = new formValidate(validConfig, popupFormEdit);
+const formEditValid = new FormValidate(validConfig, popupFormEdit);
 formEditValid.enableValidation();
-const formAddValid = new formValidate(validConfig, popupFormAdd);
+const formAddValid = new FormValidate(validConfig, popupFormAdd);
 formAddValid.enableValidation();
 
 // Popup добавления карточки ---- функция открытия
 function openPopupAdd() {
-  popupFormAdd.reset();
   formAddValid.resetErrorOpenForm();
   popupAddCards.open();
 }

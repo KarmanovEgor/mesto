@@ -2,14 +2,14 @@ export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._popupCloseButton = this._popup.querySelector('.popup__close')
-   
+
   }
   _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close()
   }
 }
-_handleEscCloseBtn = () => {
+_handleCloseBtn = () => {
   this.close()
 }
 _handleClickOnOverlay = (evt) => {
@@ -18,7 +18,7 @@ _handleClickOnOverlay = (evt) => {
   }
 }
 setEventListeners(){
-  this._popupCloseButton.addEventListener('click', this._handleEscCloseBtn);
+  this._popupCloseButton.addEventListener('click', this._handleCloseBtn);
   this._popup.addEventListener('click', this._handleClickOnOverlay);
 
 }

@@ -31,7 +31,7 @@ const profileOpenButton = document.querySelector(".profile__button-edit");
 const popupFormEdit = profilePopup.querySelector(".popup__form-edit");
 const popupOpenAddButton = document.querySelector(".profile__button-add");
 const templateEl = "#element__cards"
-const CardAddPopup = '.popup_add-form';
+const cardAddPopup = '.popup_add-form';
 const elSection = ".element";
 const popupImageSelector = '.popup_img-form'
 const popupProfileSelector = ".popup_edit";
@@ -54,7 +54,7 @@ const validConfig = {
   popupFormEdit,
   popupOpenAddButton,
   templateEl,
-  CardAddPopup,
+  cardAddPopup,
   elSection,
   popupImageSelector,
   popupProfileSelector,

@@ -1,6 +1,6 @@
 export default class Card {
   constructor(card, templateEl, openImgPopup) {
-    this._card = card;
+
     this._link = card.link;
     this._name = card.title;
     this._templateEl = templateEl;
@@ -13,7 +13,6 @@ export default class Card {
     this._likeBtnElement =
       this._cardElement.querySelector(".element__like-btn");
     this._fotoElement = this._cardElement.querySelector(".element__foto");
-
   }
 
   _setEventListener() {
@@ -25,7 +24,7 @@ export default class Card {
       this._cardElement = null;
     });
     this._fotoElement.addEventListener("click", () =>
-      this._openImgPopup(this._card)
+      this._openImgPopup({link: this._link, title: this._name})
     );
   }
 
