@@ -2,7 +2,7 @@ export default class UserInfo {
   constructor(config){
     this._profileName = document.querySelector(config.profileNameSel);
     this._profileJob = document.querySelector(config.profileJobSel);
-console.log(config)
+
   }
   getUserInfo(){
     return{

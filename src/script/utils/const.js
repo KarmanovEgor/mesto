@@ -26,6 +26,7 @@ const cards = [
 ];
 const popupAddCard = document.querySelector(".popup_add-form");
 const popupFormAdd = popupAddCard.querySelector(".popup__form-add");
+const popupAvaEdit = document.querySelector(".popup__form-ava");
 const profilePopup = document.querySelector(".popup_edit");
 const profileOpenButton = document.querySelector(".profile__button-edit");
 const popupFormEdit = profilePopup.querySelector(".popup__form-edit");
@@ -35,6 +36,9 @@ const cardAddPopup = '.popup_add-form';
 const elSection = ".element";
 const popupImageSelector = '.popup_img-form'
 const popupProfileSelector = ".popup_edit";
+const popupSelectAva = ".popup_ava-form";
+const btnAvaEdit = document.querySelector(".profile__button-ava");
+const popupDelSel = ".popup_delete-form";
 const config = {
   profileNameSel: ".profile__title",
   profileJobSel: ".profile__subtitle"
@@ -58,8 +62,12 @@ const validConfig = {
   elSection,
   popupImageSelector,
   popupProfileSelector,
+  popupSelectAva,
+  btnAvaEdit,
+  popupDelSel,
   config,
 validConfig,
-popupFormAdd
+popupFormAdd,
+popupAvaEdit
 }
 

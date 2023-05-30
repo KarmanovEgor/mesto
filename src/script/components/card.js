@@ -1,6 +1,5 @@
 export default class Card {
-  constructor(card, templateEl, openImgPopup) {
-
+  constructor(card, templateEl, openImgPopup, popupDelCardsOpen) {
     this._link = card.link;
     this._name = card.title;
     this._templateEl = templateEl;
@@ -13,6 +12,7 @@ export default class Card {
     this._likeBtnElement =
       this._cardElement.querySelector(".element__like-btn");
     this._fotoElement = this._cardElement.querySelector(".element__foto");
+    this._popupDelCardsOpen = popupDelCardsOpen;
   }
 
   _setEventListener() {
@@ -20,14 +20,16 @@ export default class Card {
       evt.target.classList.toggle("element__like-btn_active")
     );
     this._deleteButton.addEventListener("click", () => {
-      this._cardElement.remove();
-      this._cardElement = null;
+      this._popupDelCardsOpen(this);
     });
     this._fotoElement.addEventListener("click", () =>
-      this._openImgPopup({link: this._link, title: this._name})
+      this._openImgPopup({ link: this._link, title: this._name })
     );
   }
-
+  deleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
   createCard() {
     this._fotoElement.src = this._link;
     this._fotoElement.alt = this._name;

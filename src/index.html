@@ -11,11 +11,15 @@
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" title="логотип локация" alt="логотип локация" src= "<%=require('./images/logo.svg')%>">
+    <img class="header__logo" title="логотип локация" alt="логотип локация" src="<%=require('./images/logo.svg')%>">
   </header>
   <main class="content">
     <section class="profile page__profile">
-      <img class="profile__img" title="изображение профиля" alt="изображение профиля" src="<%=require('./images/profile_img.jpg')%>">
+      <div class="profile__ava-container">
+        <img class="profile__img" title="изображение профиля" alt="изображение профиля"
+          src="<%=require('./images/profile_img.jpg')%>">
+        <button type="button" class="profile__button-ava"></button>
+      </div>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button type="button" class="profile__button-edit"></button>
@@ -37,9 +41,11 @@
       <button class="popup__close" type="button"></button>
       <form class="popup__form popup__form-edit" name="form-edit" action="#" method="post" novalidate>
         <fieldset class="popup__elements">
-          <input class="popup__element" type="text" name="profilename" id="name" placeholder="Имя" minlength="2" maxlength="40" required>
+          <input class="popup__element" type="text" name="profilename" id="name" placeholder="Имя" minlength="2"
+            maxlength="40" required>
           <span class="popup__error popup__error_type_profilename"></span>
-          <input class="popup__element" type="text" name="job" id="job" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
+          <input class="popup__element" type="text" name="job" id="job" placeholder="Вид деятельности" minlength="2"
+            maxlength="200" required>
           <span class="popup__error popup__error_type_job"></span>
         </fieldset>
         <button class="popup__btn" type="submit">Сохранить</button>
@@ -53,7 +59,8 @@
       <button class="popup__close" type="button"></button>
       <form class="popup__form popup__form-add" name="form-add" action="#" method="post" novalidate>
         <fieldset class="popup__elements">
-          <input class="popup__element" type="text" name="title" id="title" placeholder="Название" minlength="2" maxlength="30" required>
+          <input class="popup__element" type="text" name="title" id="title" placeholder="Название" minlength="2"
+            maxlength="30" required>
           <span class="popup__error popup__error_type_title"></span>
           <input class="popup__element" type="url" name="link" id="link" placeholder="Ссылка на картинку" required>
           <span class="popup__error popup__error_type_link"></span>
@@ -69,6 +76,30 @@
         <img class="popup__image" src="#" alt="#">
         <figcaption class="popup__figurecaption-img"></figcaption>
       </figure>
+    </div>
+  </div>
+  <!-- Popup редактирования авы-->
+  <div class="popup popup_ava-form">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <button class="popup__close" type="button"></button>
+      <form class="popup__form popup__form-ava" name="form-ava" action="#" method="post" novalidate>
+        <fieldset class="popup__elements">
+          <input class="popup__element" type="url" name="avatar" id="ava" placeholder="Ссылка на картинку" required>
+          <span class="popup__error popup__error_type_avatar"></span>
+        </fieldset>
+        <button class="popup__btn" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <!-- Popup удаления карточки-->
+  <div class="popup popup_delete-form">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="popup__close" type="button"></button>
+      <form class="popup__form popup__form-del" name="form-del" action="#" method="post" novalidate>
+        <button class="popup__btn" type="submit">Да</button>
+      </form>
     </div>
   </div>
   <!--Template -->
