@@ -4,7 +4,7 @@ export default class PopupDelCard extends Popup {
   constructor(popupSelector, submitFunction) {
     super(popupSelector);
     this._submitFunction = submitFunction;
-    console.log(popupSelector);
+
   }
 
   setEventListeners() {
@@ -16,7 +16,6 @@ export default class PopupDelCard extends Popup {
   }
   open = (element) => {
     super.open();
-    console.log(element);
     this._element = element;
   };
 }

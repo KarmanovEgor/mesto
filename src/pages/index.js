@@ -35,21 +35,14 @@ const api = new Api({
   },
 });
 
+
 const userInfo = new UserInfo(config);
 const popupImage = new PopupWithImage(popupImageSelector);
-// Создание новой карточки
-
-const section = new Section(
-  {
-    items: cards,
-    renderer: creatNewCard,
-  },
-  elSection
-);
-section.addCardArray();
-
 const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
-  userInfo.setUserInfo(data);
+  api.setUserInfo(data)
+  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})})
+  .catch((error => console.error(`Ошибка при редактировании профиля ${error}`)))
+  .finally()
 });
 const popupDelCards = new PopupDelCard(popupDelSel, (element) => {
   element.deleteCard();
@@ -66,12 +59,17 @@ function creatNewCard(cardData) {
   );
   return cardElem.createCard();
 }
+
 const popupAddCards = new PopupWithForm(cardAddPopup, (domEl) => {
   section.addItem(creatNewCard(domEl));
 });
 
 const popapAvaEdit = new PopupWithForm(popupSelectAva, (data) => {
-  document.querySelector(".profile__img").src = data.ava;
+  // document.querySelector(".profile__img").src = data.avatar;
+  api.setUserAva(data)
+  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})})
+  .catch((error => console.error(`Ошибка при редактировании аватара ${error}`)))
+  .finally()
 });
 
 // Popup редактирования ---- функция открытия
@@ -108,3 +106,19 @@ popupDelCards.setEventListeners();
 profileOpenButton.addEventListener("click", openPopupEdit);
 popupOpenAddButton.addEventListener("click", openPopupAdd);
 btnAvaEdit.addEventListener("click", openPopupAva);
+
+Promise.all([api.getInfo(), api.getCards()])
+.then(([resInfo, resCards]) => {
+resCards.forEach(element => element.myId = resInfo._id)
+userInfo.setUserInfo({profilename: resInfo.name, job: resInfo.about, avatar: resInfo.avatar});
+section.addCardArray(resCards);
+
+})
+.catch((error => console.error(`Ошибка  ${error}`)))
+const section = new Section(
+  {
+    items: [],
+    renderer: creatNewCard,
+  },
+  elSection
+);

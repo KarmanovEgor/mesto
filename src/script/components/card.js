@@ -1,9 +1,11 @@
 export default class Card {
   constructor(card, templateEl, openImgPopup, popupDelCardsOpen) {
     this._link = card.link;
-    this._name = card.title;
+    this._name = card.name;
     this._templateEl = templateEl;
     this._openImgPopup = openImgPopup;
+    this._myId = card.myId;
+    this._ownerId = card.owner._id;
     this._cardElement = document
       .querySelector(this._templateEl)
       .content.querySelector(".element__card")
@@ -13,6 +15,8 @@ export default class Card {
       this._cardElement.querySelector(".element__like-btn");
     this._fotoElement = this._cardElement.querySelector(".element__foto");
     this._popupDelCardsOpen = popupDelCardsOpen;
+    console.log(this._ownerId);
+    console.log(card);
   }
 
   _setEventListener() {
@@ -26,6 +30,13 @@ export default class Card {
       this._openImgPopup({ link: this._link, title: this._name })
     );
   }
+  _changeVisabilityDelBtn() {
+    if (this._myId === this._ownerId) {
+      this._deleteButton.style.display = "block";
+    } else {
+      this._deleteButton.style.display = "none";
+    }
+  }
   deleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
@@ -36,7 +47,9 @@ export default class Card {
     this._cardName = this._cardElement.querySelector(
       ".element__name"
     ).textContent = this._name;
+    this._changeVisabilityDelBtn();
     this._setEventListener();
+    console.log(this._cardName);
     return this._cardElement;
   }
 }

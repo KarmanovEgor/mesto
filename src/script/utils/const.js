@@ -31,18 +31,19 @@ const profilePopup = document.querySelector(".popup_edit");
 const profileOpenButton = document.querySelector(".profile__button-edit");
 const popupFormEdit = profilePopup.querySelector(".popup__form-edit");
 const popupOpenAddButton = document.querySelector(".profile__button-add");
-const templateEl = "#element__cards"
-const cardAddPopup = '.popup_add-form';
+const templateEl = "#element__cards";
+const cardAddPopup = ".popup_add-form";
 const elSection = ".element";
-const popupImageSelector = '.popup_img-form'
+const popupImageSelector = ".popup_img-form";
 const popupProfileSelector = ".popup_edit";
 const popupSelectAva = ".popup_ava-form";
 const btnAvaEdit = document.querySelector(".profile__button-ava");
 const popupDelSel = ".popup_delete-form";
 const config = {
   profileNameSel: ".profile__title",
-  profileJobSel: ".profile__subtitle"
-}
+  profileJobSel: ".profile__subtitle",
+  profileAvatar: ".profile__img",
+};
 const validConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__element",
@@ -52,7 +53,7 @@ const validConfig = {
   textErrorClass: "popup__error_visible",
   errorSelectType: ".popup__error_type_",
 };
- export {
+export {
   cards,
   profileOpenButton,
   popupFormEdit,
@@ -66,8 +67,7 @@ const validConfig = {
   btnAvaEdit,
   popupDelSel,
   config,
-validConfig,
-popupFormAdd,
-popupAvaEdit
-}
-
+  validConfig,
+  popupFormAdd,
+  popupAvaEdit,
+};
