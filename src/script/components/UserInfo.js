@@ -3,7 +3,7 @@ export default class UserInfo {
     this._profileName = document.querySelector(config.profileNameSel);
     this._profileJob = document.querySelector(config.profileJobSel);
     this._profileAva = document.querySelector(config.profileAvatar);
-
+   
   }
   getUserInfo() {
     return {
@@ -15,6 +15,11 @@ export default class UserInfo {
     this._profileName.textContent = profilename;
     this._profileJob.textContent = job;
     this._profileAva.src = avatar;
-
+  }
+  setId(id) {
+    this._id = id;
+  }
+  getId() {
+    return this._id;
   }
 }

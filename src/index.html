@@ -38,7 +38,7 @@
   <div class="popup popup_edit">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close" type="button" title="Закрыть окно" aria-label="Закрыть"></button>
       <form class="popup__form popup__form-edit" name="form-edit" action="#" method="post" novalidate>
         <fieldset class="popup__elements">
           <input class="popup__element" type="text" name="profilename" id="name" placeholder="Имя" minlength="2"
@@ -56,7 +56,7 @@
   <div class="popup popup_add-form">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close" type="button" title="Закрыть окно" aria-label="Закрыть"></button>
       <form class="popup__form popup__form-add" name="form-add" action="#" method="post" novalidate>
         <fieldset class="popup__elements">
           <input class="popup__element" type="text" name="title" id="title" placeholder="Название" minlength="2"
@@ -71,7 +71,7 @@
   </div>
   <div class="popup popup_img-form">
     <div class="popup__gallery">
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close" type="button" title="Закрыть окно" aria-label="Закрыть"></button>
       <figure class="popup__figure-img">
         <img class="popup__image" src="#" alt="#">
         <figcaption class="popup__figurecaption-img"></figcaption>
@@ -80,9 +80,9 @@
   </div>
   <!-- Popup редактирования авы-->
   <div class="popup popup_ava-form">
-    <div class="popup__container">
+    <div class="popup__container popup__container_ava">
       <h2 class="popup__title">Обновить аватар</h2>
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close" type="button" title="Закрыть окно" aria-label="Закрыть"></button>
       <form class="popup__form popup__form-ava" name="form-ava" action="#" method="post" novalidate>
         <fieldset class="popup__elements">
           <input class="popup__element" type="url" name="avatar" id="ava" placeholder="Ссылка на картинку" required>
@@ -94,9 +94,9 @@
   </div>
   <!-- Popup удаления карточки-->
   <div class="popup popup_delete-form">
-    <div class="popup__container">
+    <div class="popup__container popup__container_del">
       <h2 class="popup__title">Вы уверены?</h2>
-      <button class="popup__close" type="button"></button>
+      <button class="popup__close" type="button" title="Закрыть окно" aria-label="Закрыть"></button>
       <form class="popup__form popup__form-del" name="form-del" action="#" method="post" novalidate>
         <button class="popup__btn" type="submit">Да</button>
       </form>
@@ -109,7 +109,10 @@
       <img class="element__foto" alt="#" src="#">
       <div class="element__names">
         <h2 class="element__name"></h2>
-        <button class="element__like-btn" type="button"></button>
+        <div class="element__like-container">
+          <button class="element__like-btn" type="button" title="Оценить фотографию" aria-label="Поставить лайк"></button>
+          <span class="element__like-counter"></span>
+        </div>
       </div>
     </div>
   </template>

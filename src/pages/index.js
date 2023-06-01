@@ -40,13 +40,21 @@ const userInfo = new UserInfo(config);
 const popupImage = new PopupWithImage(popupImageSelector);
 const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
   api.setUserInfo(data)
-  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})})
+  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})
+  popupProfile.close();
+})
   .catch((error => console.error(`Ошибка при редактировании профиля ${error}`)))
-  .finally()
+  .finally(() => popupProfile.resetTextBtn())
 });
-const popupDelCards = new PopupDelCard(popupDelSel, (element) => {
-  element.deleteCard();
+const popupDelCards = new PopupDelCard(popupDelSel, ({element, cardId}) => {
+api.deleteCard(cardId)
+.then(()=> {
+  element.deleteCard()
   popupDelCards.close();
+})
+.catch((error => console.error(`Ошибка при удалении карточки ${error}`)))
+.finally()
+
 });
 
 // функция ввода данных в попап и добавления карточки
@@ -55,21 +63,46 @@ function creatNewCard(cardData) {
     cardData,
     templateEl,
     popupImage.open,
-    popupDelCards.open
-  );
+    popupDelCards.open,
+    (cardId, elLike) => {
+    if (elLike.classList.contains('element__like-btn_active')){
+      api.deleteLike(cardId)
+      .then (res => {
+        console.log(res)
+        cardElem.toggleLike(res.likes);
+      })
+      .catch((error => console.error(`Ошибка при удалении лайка ${error}`)))
+    } else {
+        api.addLike(cardId)
+        .then(res => {
+          console.log(res)
+          cardElem.toggleLike(res.likes)
+        })
+        .catch((error => console.error(`Ошибка при добавлении лайка ${error}`)))
+      }
+    });
   return cardElem.createCard();
 }
-
-const popupAddCards = new PopupWithForm(cardAddPopup, (domEl) => {
-  section.addItem(creatNewCard(domEl));
+// Создаю экземпляр класса для формы добавления карточек с сабмитом
+const popupAddCards = new PopupWithForm(cardAddPopup, (data) => {
+ api.addCard(data)
+  .then((resCard) => {
+    console.log(userInfo.getId())
+    resCard.myId = userInfo.getId()
+    section.addItem(creatNewCard(resCard))
+    popupAddCards.close()
+  })
+  .catch((error => console.error(`Ошибка при создании карточки ${error}`)))
+  .finally(() => popupAddCards.resetTextBtn())
 });
 
 const popapAvaEdit = new PopupWithForm(popupSelectAva, (data) => {
-  // document.querySelector(".profile__img").src = data.avatar;
   api.setUserAva(data)
-  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})})
+  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})
+  popapAvaEdit.close()
+})
   .catch((error => console.error(`Ошибка при редактировании аватара ${error}`)))
-  .finally()
+  .finally(() => popapAvaEdit.resetTextBtn())
 });
 
 // Popup редактирования ---- функция открытия
@@ -111,6 +144,7 @@ Promise.all([api.getInfo(), api.getCards()])
 .then(([resInfo, resCards]) => {
 resCards.forEach(element => element.myId = resInfo._id)
 userInfo.setUserInfo({profilename: resInfo.name, job: resInfo.about, avatar: resInfo.avatar});
+userInfo.setId(resInfo._id )
 section.addCardArray(resCards);
 
 })
