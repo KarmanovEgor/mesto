@@ -26,7 +26,6 @@ import {
   popupAvaEdit,
 } from "../script/utils/const.js";
 
-
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-66",
   headers: {
@@ -35,26 +34,33 @@ const api = new Api({
   },
 });
 
-
 const userInfo = new UserInfo(config);
 const popupImage = new PopupWithImage(popupImageSelector);
 const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
-  api.setUserInfo(data)
-  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})
-  popupProfile.close();
-})
-  .catch((error => console.error(`Ошибка при редактировании профиля ${error}`)))
-  .finally(() => popupProfile.resetTextBtn())
+  api
+    .setUserInfo(data)
+    .then((res) => {
+      userInfo.setUserInfo({
+        profilename: res.name,
+        job: res.about,
+        avatar: res.avatar,
+      });
+      popupProfile.close();
+    })
+    .catch((error) =>
+      console.error(`Ошибка при редактировании профиля ${error}`)
+    )
+    .finally(() => popupProfile.resetTextBtn());
 });
-const popupDelCards = new PopupDelCard(popupDelSel, ({element, cardId}) => {
-api.deleteCard(cardId)
-.then(()=> {
-  element.deleteCard()
-  popupDelCards.close();
-})
-.catch((error => console.error(`Ошибка при удалении карточки ${error}`)))
-.finally()
-
+const popupDelCards = new PopupDelCard(popupDelSel, ({ element, cardId }) => {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      element.deleteCard();
+      popupDelCards.close();
+    })
+    .catch((error) => console.error(`Ошибка при удалении карточки ${error}`))
+    .finally();
 });
 
 // функция ввода данных в попап и добавления карточки
@@ -65,44 +71,60 @@ function creatNewCard(cardData) {
     popupImage.open,
     popupDelCards.open,
     (cardId, elLike) => {
-    if (elLike.classList.contains('element__like-btn_active')){
-      api.deleteLike(cardId)
-      .then (res => {
-        console.log(res)
-        cardElem.toggleLike(res.likes);
-      })
-      .catch((error => console.error(`Ошибка при удалении лайка ${error}`)))
-    } else {
-        api.addLike(cardId)
-        .then(res => {
-          console.log(res)
-          cardElem.toggleLike(res.likes)
-        })
-        .catch((error => console.error(`Ошибка при добавлении лайка ${error}`)))
+      if (elLike.classList.contains("element__like-btn_active")) {
+        api
+          .deleteLike(cardId)
+          .then((res) => {
+            console.log(res);
+            cardElem.toggleLike(res.likes);
+          })
+          .catch((error) =>
+            console.error(`Ошибка при удалении лайка ${error}`)
+          );
+      } else {
+        api
+          .addLike(cardId)
+          .then((res) => {
+            console.log(res);
+            cardElem.toggleLike(res.likes);
+          })
+          .catch((error) =>
+            console.error(`Ошибка при добавлении лайка ${error}`)
+          );
       }
-    });
+    }
+  );
   return cardElem.createCard();
 }
 // Создаю экземпляр класса для формы добавления карточек с сабмитом
 const popupAddCards = new PopupWithForm(cardAddPopup, (data) => {
- api.addCard(data)
-  .then((resCard) => {
-    console.log(userInfo.getId())
-    resCard.myId = userInfo.getId()
-    section.addItem(creatNewCard(resCard))
-    popupAddCards.close()
-  })
-  .catch((error => console.error(`Ошибка при создании карточки ${error}`)))
-  .finally(() => popupAddCards.resetTextBtn())
+  api
+    .addCard(data)
+    .then((resCard) => {
+      console.log(userInfo.getId());
+      resCard.myId = userInfo.getId();
+      section.addItem(creatNewCard(resCard));
+      popupAddCards.close();
+    })
+    .catch((error) => console.error(`Ошибка при создании карточки ${error}`))
+    .finally(() => popupAddCards.resetTextBtn());
 });
 
 const popapAvaEdit = new PopupWithForm(popupSelectAva, (data) => {
-  api.setUserAva(data)
-  .then(res => {userInfo.setUserInfo({profilename: res.name, job: res.about, avatar: res.avatar})
-  popapAvaEdit.close()
-})
-  .catch((error => console.error(`Ошибка при редактировании аватара ${error}`)))
-  .finally(() => popapAvaEdit.resetTextBtn())
+  api
+    .setUserAva(data)
+    .then((res) => {
+      userInfo.setUserInfo({
+        profilename: res.name,
+        job: res.about,
+        avatar: res.avatar,
+      });
+      popapAvaEdit.close();
+    })
+    .catch((error) =>
+      console.error(`Ошибка при редактировании аватара ${error}`)
+    )
+    .finally(() => popapAvaEdit.resetTextBtn());
 });
 
 // Popup редактирования ---- функция открытия
@@ -141,14 +163,17 @@ popupOpenAddButton.addEventListener("click", openPopupAdd);
 btnAvaEdit.addEventListener("click", openPopupAva);
 
 Promise.all([api.getInfo(), api.getCards()])
-.then(([resInfo, resCards]) => {
-resCards.forEach(element => element.myId = resInfo._id)
-userInfo.setUserInfo({profilename: resInfo.name, job: resInfo.about, avatar: resInfo.avatar});
-userInfo.setId(resInfo._id )
-section.addCardArray(resCards);
-
-})
-.catch((error => console.error(`Ошибка  ${error}`)))
+  .then(([resInfo, resCards]) => {
+    resCards.forEach((element) => (element.myId = resInfo._id));
+    userInfo.setUserInfo({
+      profilename: resInfo.name,
+      job: resInfo.about,
+      avatar: resInfo.avatar,
+    });
+    userInfo.setId(resInfo._id);
+    section.addCardArray(resCards);
+  })
+  .catch((error) => console.error(`Ошибка  ${error}`));
 const section = new Section(
   {
     items: [],
