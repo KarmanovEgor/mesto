@@ -33,10 +33,11 @@
 .popup__form{display:flex;flex-direction:column;justify-content:space-between;max-width:358px;width:100%}@media screen and (max-width:767px){.popup__form{box-sizing:border-box;padding-top:35px;width:calc(198px + 12.5vw)}}
 .popup_opened{opacity:1;visibility:visible}
 .popup__title{font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;text-align:start}@media screen and (max-width:767px){.popup__title{font-size:18px;line-height:22px}}
+.popup__image{box-sizing:border-box;-o-object-fit:contain;object-fit:contain;-o-object-position:center;object-position:center}
 .popup__btn{background:#000;border:0;border-radius:2px;color:#fff;cursor:pointer;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:22px;padding:0;text-align:center;transition:.5s ease-in-out;width:100%}.popup__btn:hover{opacity:.8}.popup__btn:disabled{background-color:transparent;border:1px solid #000;color:#000;opacity:.2}@media screen and (max-width:767px){.popup__btn{font-size:14px;height:calc(44.66667px + .41667vw);line-height:17px;margin-top:0}}
 .popup__element{border:0;border-bottom:1px solid rgba(0,0,0,.2);box-sizing:border-box;font-size:14px;font-style:normal;font-weight:400;line-height:17px;margin-bottom:2px;padding:0 0 10px;width:100%}
 .popup__elements{border:0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;margin:0;max-width:358px;padding:0 0 15px;width:100%}@media screen and (max-width:767px){.popup__elements{padding-bottom:10px}}
-.popup__gallery{max-height:75vh;max-width:75vw;position:relative}
+.popup__gallery{box-sizing:border-box;position:relative}
 .popup__figurecaption-img{color:#fff;font-size:12px;line-height:15px}
 .popup__figure-img{height:100%;margin:0;width:100%}
 .popup__element_invalid{border-bottom:1px solid rgba(255,0,0,.1)}
