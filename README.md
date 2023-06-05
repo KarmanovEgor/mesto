@@ -56,6 +56,18 @@
 6. интеграция с бэкендом: все данные сохраняются на нём;
 7. проект размещен на GitHub Pages.
 8. Инструменты и стек: #HTML #CSS #JS #Webpack #GitHubPages #API
+
+Another project in my portfolio as part of my studies at @yandex.practicum. Mesto is a web service where you can add photos, delete them, and like them.
+    Here's what was done:
+1. developed interactive page;
+2. implemented JavaScript functionality: adding card with photos, deleting cards and liking them;
+3. developed validation of all forms and improved popups UX;
+4. positioning of elements;
+5. Mesto was refactored based on the OOP paradigm;
+6. prepared application infrastructure via Webpack;
+7. integration with the backend: all data are stored on it;
+8. the project is hosted on GitHub Pages.
+9. Tools and stack: #HTML #CSS #JS #Webpack #GitHubPages #API
 –––––––––––––––––––––––––––––
 
 **Figma**
