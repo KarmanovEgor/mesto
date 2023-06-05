@@ -46,7 +46,7 @@ export default class Card {
   _checkStatusLike() {
     this._like.forEach((el) => {
       if (el._id === this._myId) {
-        this._likeBtnElement.classList.add("element__like-btn_active")
+        this._likeBtnElement.classList.add("element__like-btn_active");
         return;
       }
       this._counterLike.textContent = this._likeQuantity;

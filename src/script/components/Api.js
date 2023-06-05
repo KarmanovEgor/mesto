@@ -58,10 +58,9 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: data.title,
-        link: data.link
+        link: data.link,
       }),
-    })
-    .then((res) => (res.ok ? res.json() : Promise.reject()));
+    }).then((res) => (res.ok ? res.json() : Promise.reject()));
   }
 
   // отправляем PUT-запрос на сервер для добавления лайка карточке.
